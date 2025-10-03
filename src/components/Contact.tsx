@@ -7,19 +7,19 @@ const Contact = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "seu@email.com",
-      href: "mailto:seu@email.com"
+      value: "freirey46@gmail.com",
+      href: "freirey46@gmail.com"
     },
     {
       icon: Phone,
       label: "Telefone",
-      value: "+55 (11) 99999-9999",
-      href: "tel:+5511999999999"
+      value: "+55 (11) 99208-5032",
+      href: "https://wa.me/5511992085032?text=Ol%C3%A1%20Yasmim%2C%20vim%20pelo%20seu%20portf%C3%B3lio%2C%20gostaria%20de%20saber%20mais%20sobre%20voc%C3%AA..."
     },
     {
       icon: MapPin,
       label: "Localização",
-      value: "São Paulo, Brasil",
+      value: "São Bernardo do Campo. São Paulo",
       href: "#"
     }
   ];
@@ -28,20 +28,26 @@ const Contact = () => {
     {
       icon: Github,
       label: "GitHub",
-      href: "https://github.com",
+      href: "https://github.com/YASMIM-FSB",
       color: "hover:text-foreground"
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
-      href: "https://linkedin.com",
+      href: "www.linkedin.com/in/yasmim-freire-9951ab29b",
       color: "hover:text-blue-500"
     },
     {
-      icon: Twitter,
-      label: "Twitter",
-      href: "https://twitter.com",
+      icon: Whatsapp,
+      label: "Whatsapp",
+      href: "https://wa.me/5511992085032?text=Ol%C3%A1%20Yasmim%2C%20vim%20pelo%20seu%20portf%C3%B3lio%2C%20gostaria%20de%20saber%20mais%20sobre%20voc%C3%AA...",
       color: "hover:text-sky-400"
+      {
+      icon: Instagram,
+      label: "Instagram",
+      href: "https://www.instagram.com/yfreire.dev",
+      color: "hover:text-sky-400"
+    }
     }
   ];
 
