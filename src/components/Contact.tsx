@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone, Github, Linkedin, Twitter } from "lucide-react";
+import { Mail, MapPin, Phone, Github, Linkedin, Twitter, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -8,7 +8,7 @@ const Contact = () => {
       icon: Mail,
       label: "Email",
       value: "freirey46@gmail.com",
-      href: "freirey46@gmail.com"
+      href: "freirey46@gmail.com",
     },
     {
       icon: Phone,
@@ -34,20 +34,14 @@ const Contact = () => {
     {
       icon: Linkedin,
       label: "LinkedIn",
-      href: "www.linkedin.com/in/yasmim-freire-9951ab29b",
+      href: "https://www.linkedin.com/in/yasmim-freire-9951ab29b/",
       color: "hover:text-blue-500"
     },
-    {
-      icon: Whatsapp,
-      label: "Whatsapp",
-      href: "https://wa.me/5511992085032?text=Ol%C3%A1%20Yasmim%2C%20vim%20pelo%20seu%20portf%C3%B3lio%2C%20gostaria%20de%20saber%20mais%20sobre%20voc%C3%AA...",
-      color: "hover:text-sky-400"
-      {
+   {
       icon: Instagram,
       label: "Instagram",
       href: "https://www.instagram.com/yfreire.dev",
       color: "hover:text-sky-400"
-    }
     }
   ];
 
@@ -103,8 +97,7 @@ const Contact = () => {
 
           <div className="pt-8">
             <Button size="lg" className="gradient-primary shadow-glow hover:scale-105 transition-smooth">
-              <Mail className="w-5 h-5 mr-2" />
-              Enviar Email
+              <a href="https://wa.me/5511992085032?text=Ol%C3%A1%20Yasmim%2C%20vim%20pelo%20seu%20portf%C3%B3lio%2C%20gostaria%20de%20saber%20mais%20sobre%20voc%C3%AA..." target="_blank">Me chame no Whatsapp</a>
             </Button>
           </div>
         </div>

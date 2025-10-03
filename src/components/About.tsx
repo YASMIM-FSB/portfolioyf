@@ -26,14 +26,14 @@ const About = () => {
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-4xl md:text-5xl font-bold">Sobre Mim</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Desenvolvedora apaixonado por transformar ideias em realidade digital
+            Desenvolvedora apaixonada por transformar ideias em realidade digital
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
           <div className="space-y-6">
             <p className="text-lg leading-relaxed text-muted-foreground">
-              Com mais de 3 anos de experiência em desenvolvimento web, tenho dedicado minha carreira 
+              Com mais de 3 anos de experiência em Tecnologia da Informação e 1 ano em Desenvolvimento Web, tenho dedicado minha carreira 
               a criar soluções digitais que fazem a diferença. Minha jornada começou com curiosidade 
               sobre como as coisas funcionam na web e evoluiu para uma paixão por construir 
               experiências excepcionais para usuários.
@@ -51,6 +51,7 @@ const About = () => {
               <div>
                 <h4 className="font-semibold text-lg">Estágiaria</h4>
                 <p className="text-accent">Progressão Empresarial • 2024 - Presente</p>
+                <p className="text-muted-foreground">Gerenciamento de Marketing e desenvolvimento de aplicações web escaláveis</p>
               </div>
               <div>
                 

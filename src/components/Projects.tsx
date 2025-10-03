@@ -6,22 +6,22 @@ import { Badge } from "@/components/ui/badge";
 const Projects = () => {
   const projects = [
     {
-      title: "E-commerce Platform",
-      description: "Plataforma completa de e-commerce com sistema de pagamentos, gestão de produtos e painel administrativo.",
-      technologies: ["React", "Node.js", "PostgreSQL", "Stripe"],
-      image: "https://images.unsplash.com/photo-1661956602116-aa6865609028?w=800&h=600&fit=crop",
-      github: "https://github.com",
-      demo: "https://demo.com"
+      title: "Progressão",
+      description: "Uma landing page simples para um escritório de contabilidade que desejava um site bem estruturado, com uma apresentação adequada e com todas as informações de contato",
+      technologies: ["HTML", "CSS", "Javascript", "PHP"],
+      image: "img/logoProgressao.jpeg",
+      github: "#",
+      demo: "https://progressaoempresarial.com"
     },
-    {
-      title: "Dashboard Analytics",
-      description: "Dashboard interativo para visualização de dados em tempo real com gráficos e métricas personalizáveis.",
-      technologies: ["React", "TypeScript", "D3.js", "Firebase"],
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-      github: "https://github.com",
-      demo: "https://demo.com"
+   {
+      title: "ParkOn - Projeto em andamento",
+      description: "Um aplicativo protótipo capaz de informar o usuário quantas vagas livres há em estacionamento selecionado, com base em uma maquete desenvolvida em arduino e ESP32. ",
+      technologies: ["React", "TypeScript", "C++"],
+      image: "img/ParkOn.png",
+      github: "#",
+      botao: "#"
     },
-    {
+     /*{
       title: "Social Media App",
       description: "Rede social com feed em tempo real, sistema de mensagens e compartilhamento de conteúdo multimídia.",
       technologies: ["React Native", "Node.js", "MongoDB", "Socket.io"],
@@ -36,7 +36,7 @@ const Projects = () => {
       image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop",
       github: "https://github.com",
       demo: "https://demo.com"
-    }
+    }*/
   ];
 
   return (
@@ -80,17 +80,17 @@ const Projects = () => {
               </CardContent>
               
               <CardFooter className="gap-4">
-                <Button variant="outline" className="flex-1" asChild>
+                {/*<Button variant="outline" className="flex-1" asChild>
                   <a href={project.github} target="_blank" rel="noopener noreferrer">
                     <Github className="w-4 h-4 mr-2" />
                     Código
                   </a>
-                </Button>
+                </Button>*/}
                 <Button className="flex-1 gradient-primary" asChild>
                   <a href={project.demo} target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="w-4 h-4 mr-2" />
-                    Demo
-                  </a>
+                    Acessar
+                  </a>  
                 </Button>
               </CardFooter>
             </Card>

@@ -36,8 +36,8 @@ const Hero = () => {
             <Button size="lg" className="gradient-primary shadow-glow transition-smooth hover:scale-105">
               Ver Projetos
             </Button>
-            <Button href="https://wa.me/5511992085032?text=Ol%C3%A1%20Yasmim%2C%20vim%20pelo%20seu%20portf%C3%B3lio%2C%20gostaria%20de%20saber%20mais%20sobre%20voc%C3%AA..." size="lg" variant="outline" className="transition-smooth hover:scale-105">
-              Entrar em Contato
+            <Button size="lg" variant="outline" className="transition-smooth hover:scale-105">
+              <a href="https://wa.me/5511992085032?text=Ol%C3%A1%20Yasmim%2C%20vim%20pelo%20seu%20portf%C3%B3lio%2C%20gostaria%20de%20saber%20mais%20sobre%20voc%C3%AA..." target="_blank">Entrar em Contato</a>
             </Button>
           </div>
           
@@ -51,7 +51,7 @@ const Hero = () => {
               <Github className="w-5 h-5" />
             </a>
             <a 
-              href="www.linkedin.com/in/yasmim-freire-9951ab29b" 
+              href="https://linkedin.com/in/yasmim-freire-9951ab29b" 
               target="_blank" 
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-card hover:bg-primary transition-smooth hover:shadow-glow"
