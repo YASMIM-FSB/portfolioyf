@@ -2,6 +2,7 @@ import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroBg from "@/assets/hero-bg.jpg";
 
+
 const Hero = () => {
   return (
     <section 
@@ -75,12 +76,15 @@ const Hero = () => {
         </div>
       </div>
       
-      <a 
-        href="#about"
+      <button
+        onClick={() => {
+          const section = document.querySelector("#about");
+          section?.scrollIntoView({ behavior: "smooth" });
+        }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce"
-      >
+        >
         <ArrowDown className="w-6 h-6 text-primary" />
-      </a>
+      </button>
     </section>
   );
 };
