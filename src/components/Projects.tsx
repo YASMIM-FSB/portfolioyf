@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 const Projects = () => {
   const projects = [
     {
-      title: "Progressão",
+      title: "Progressão Empresaarial",
       description: "Uma landing page simples para um escritório de contabilidade que desejava um site bem estruturado, com uma apresentação adequada e com todas as informações de contato",
       technologies: ["HTML", "CSS", "Javascript", "PHP"],
       image: progressaoImg,
