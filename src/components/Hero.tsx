@@ -23,7 +23,7 @@ const Hero = () => {
               Yasmim Freire
             </h1>
             <p className="text-2xl md:text-3xl text-muted-foreground font-medium">
-              Desenvolvedora Full Stack
+              Desenvolvedora Web
             </p>
           </div>
           
