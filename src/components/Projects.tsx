@@ -1,5 +1,7 @@
 import { ExternalLink, Github } from "lucide-react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import progressaoImg from '../../img/logoProgressao.jpeg';
+import parkOnImg from '../../img/ParkOn.png';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
@@ -9,7 +11,7 @@ const Projects = () => {
       title: "Progressão",
       description: "Uma landing page simples para um escritório de contabilidade que desejava um site bem estruturado, com uma apresentação adequada e com todas as informações de contato",
       technologies: ["HTML", "CSS", "Javascript", "PHP"],
-      image: "img/logoProgressao.jpeg",
+      image: progressaoImg,
       github: "#",
       demo: "https://progressaoempresarial.com"
     },
@@ -17,7 +19,7 @@ const Projects = () => {
       title: "ParkOn - Projeto em andamento",
       description: "Um aplicativo protótipo capaz de informar o usuário quantas vagas livres há em estacionamento selecionado, com base em uma maquete desenvolvida em arduino e ESP32. ",
       technologies: ["React", "TypeScript", "C++"],
-      image: "img/ParkOn.png",
+      image: parkOnImg,
       github: "#",
       botao: "#"
     },

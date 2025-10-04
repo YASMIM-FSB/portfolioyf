@@ -39,9 +39,7 @@ const About = () => {
               experiências excepcionais para usuários.
             </p>
             <p className="text-lg leading-relaxed text-muted-foreground">
-              Especializo-me em tecnologias modernas como React, TypeScript, Node.js e muito mais. 
-              Acredito que a combinação de código elegante com design intuitivo é a chave para 
-              criar produtos digitais de sucesso.
+    
             </p>
           </div>
           
@@ -49,7 +47,7 @@ const About = () => {
             <h3 className="text-2xl font-bold mb-6">Experiência</h3>
             <div className="space-y-6">
               <div>
-                <h4 className="font-semibold text-lg">Estágiaria</h4>
+                <h4 className="font-semibold text-lg">Estagiária</h4>
                 <p className="text-accent">Progressão Empresarial • 2024 - Presente</p>
                 <p className="text-muted-foreground">Gerenciamento de Marketing e desenvolvimento de aplicações web escaláveis</p>
               </div>

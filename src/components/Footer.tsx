@@ -6,13 +6,12 @@ const Footer = () => {
   return (
     <footer className="py-8 px-4 border-t border-border">
       <div className="container mx-auto max-w-6xl">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-muted-foreground text-center md:text-left">
+        <div className="flex flex-col md:flex-row items-center justify-center">
+          <p className="text-muted-foreground text-center">
             © {currentYear} Yasmim Freire. Todos os direitos reservados.
           </p>
           
-          <p className="flex items-center gap-2 text-muted-foreground">
-            Feito usando React & TypeScript
+          <p className=" text-muted-foreground">
           </p>
         </div>
       </div>

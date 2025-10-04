@@ -29,13 +29,20 @@ const Hero = () => {
           
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Criando experiências digitais incríveis através de código limpo e design intuitivo.
-            Especializada em React, TypeScript e desenvolvimento web moderno.
           </p>
           
           <div className="flex flex-wrap gap-4 justify-center items-center pt-4">
-            <Button size="lg" className="gradient-primary shadow-glow transition-smooth hover:scale-105">
-              Ver Projetos
-            </Button>
+            <Button
+        size="lg"
+         className="gradient-primary shadow-glow transition-smooth hover:scale-105"
+         onClick={() => {
+        const section = document.querySelector("#projects");
+    section?.scrollIntoView({ behavior: "smooth" });
+  }}
+>
+  Ver Projetos
+</Button>
+
             <Button size="lg" variant="outline" className="transition-smooth hover:scale-105">
               <a href="https://wa.me/5511992085032?text=Ol%C3%A1%20Yasmim%2C%20vim%20pelo%20seu%20portf%C3%B3lio%2C%20gostaria%20de%20saber%20mais%20sobre%20voc%C3%AA..." target="_blank">Entrar em Contato</a>
             </Button>

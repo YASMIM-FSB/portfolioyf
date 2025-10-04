@@ -4,7 +4,7 @@ import path from "path"
 
 
 export default defineConfig({
-  base: "/portfolioyf/",
+  base: "/", 
   plugins: [react()],
   resolve: {
     alias: {
