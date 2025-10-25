@@ -1,0 +1,808 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="output.css">
+  <title>Yasmim Freire – Portfólio</title>
+
+  <style>
+    /* ================= Design Tokens ================= */
+    :root{
+      --container: 1200px;
+      --radius: 12px;
+
+      /* Cores base (modo escuro do print) */
+      --bg-start: #0b1220;     /* topo */
+      --bg-end:   #0e1628;     /* base */
+      --text: #e6edf6;         /* texto principal */
+      --muted: #8b9db7;        /* texto secundário */
+      --muted-strong: #a8b3c7; /* título "Desenvolvedora Fullstack" */
+      --primary-1: #7c3aed;    /* roxo */
+      --primary-2: #a855f7;    /* roxo claro */
+      --accent: #ec4899;       /* rosa (Olá, eu sou) */
+      --border: rgba(148, 163, 184, .18);
+
+      --card: rgba(255,255,255,.04);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,.45);
+      --glow: 0 16px 40px rgba(168, 85, 247, .45);
+    }
+
+    html,body{height:100%}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      color: var(--text);
+      background-color: #0b1220;
+      min-height:100%;
+    }
+    .container{max-width:var(--container); margin-inline:auto; padding-inline:24px}
+
+    /* ================= Navbar ================= */
+    .nav{
+      position:fixed; inset:0 0 auto 0; height:64px; z-index:50;
+      display:flex; align-items:center;
+      background: rgba(10,16,28,.40);
+      backdrop-filter: blur(10px) saturate(140%);
+      -webkit-backdrop-filter: blur(10px) saturate(140%);
+    }
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; width:100%}
+    .brand{
+      color:#cbd5e1; font-weight:700; letter-spacing:.3px; font-size:14px;
+      opacity:.0; pointer-events:none; /* (no print não aparece brand à esquerda) */
+    }
+
+    .links{display:flex; gap:28px; align-items:center}
+    .link{
+      color:#9fb0c9; font-weight:600; font-size:14px; text-decoration:none;
+      transition:color .2s ease, opacity .2s ease;
+    }
+    .link:hover{ color:#d0d9e6 }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:10px 16px; border-radius: 999px; font-weight:700; font-size:14px;
+      border:1px solid transparent; cursor:pointer; text-decoration:none;
+      transition: filter .2s ease, transform .06s ease;
+    }
+    .btn:active{ transform: translateY(1px); }
+
+    .btn-gradient{
+      color:#fff;
+      background-image: linear-gradient(135deg, var(--primary-1), var(--primary-2));
+      box-shadow: var(--glow);
+    }
+    .btn-gradient:hover{ filter: brightness(1.06); }
+
+    /* ================= Hero ================= */
+    .hero{
+      display:flex; align-items:center; justify-content:center;
+      text-align:center; min-height: calc(100svh - 64px);
+      padding-top:64px; /* compensar navbar */
+      position: relative;
+      min-height: calc(100vh - 64px);
+    }
+
+    .scroll-down{
+    position: absolute;
+    bottom: 30px; /* distância da borda inferior */
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    }
+
+    .kicker{
+      color: var(--accent);
+      font-weight:700; font-size:14px; letter-spacing:.6px;
+      margin-bottom:18px;
+    }
+    .title{
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 700; line-height:1.05; margin:0 0 8px;
+      background: linear-gradient(90deg, #c4b5fd, #a78bfa);
+      -webkit-background-clip:text; background-clip:text; color: transparent;
+    }
+    .subtitle{
+      margin:0 auto 22px;
+      color: var(--muted-strong);
+      font-size: clamp(18px, 2.8vw, 28px);
+      font-weight: 700;
+      max-width: 900px;
+    }
+    .lead{
+      margin:0 auto 28px;
+      color: var(--muted);
+      font-size: clamp(15px, 2.2vw, 18px);
+      line-height:1.7;
+      max-width: 820px;
+    }
+
+    .cta{ display:flex; gap:14px; justify-content:center; margin-top:8px; flex-wrap:wrap; }
+    .btn-outline{
+      color:#d3d9e4;
+      border:1px solid #263246;
+      background: rgba(255,255,255,.02);
+    }
+    .btn-outline:hover{ border-color:#3a4a65; filter:brightness(1.05); }
+
+    /* ================= Ícones sociais ================= */
+    .socials{ display:flex; gap:14px; justify-content:center; margin-top:26px; }
+    .social{
+      width:44px; height:44px; display:inline-flex; align-items:center; justify-content:center;
+      border-radius:50%; background: rgba(255,255,255,.04);
+      border:1px solid var(--border); color:#d9e1ee; text-decoration:none;
+      transition: transform .06s ease, filter .2s ease, background .2s ease;
+    }
+    .social:hover {
+        background: linear-gradient(135deg, #7c3aed, #a855f7); /* gradiente roxo */
+        color: white;
+        border-color: transparent;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(168, 85, 247, 0.4);
+        }
+    .social:hover{ filter: brightness(1.1); background: rgba(255,255,255,.06); }
+    .icon{ width:20px; height:20px; display:block; }
+
+    /* ================= Seta para baixo ================= */
+    .scroll-down{
+      display:inline-flex; align-items:center; justify-content:center;
+      width:28px; height:28px; margin:34px auto 0; color:var(--primary-2); opacity:.9;
+      animation: float 2.4s ease-in-out infinite;
+    }
+    @keyframes float{
+      0%,100%{ transform: translateY(0) }
+      50%{ transform: translateY(6px) }
+    }
+
+    /* ================= Responsividade ================= */
+    @media (max-width: 820px){
+      .links{ gap:18px }
+      .link{ font-size:13px }
+      .btn{ padding:9px 14px; font-size:13px }
+    }
+    @media (max-width: 640px){
+      .subtitle{ max-width: 92% }
+      .lead{ max-width: 92% }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header
+  id="site-nav"
+  class="fixed top-0 inset-x-0 z-50  backdrop-blur-md transition-shadow"
+>
+  <div class="container mx-auto px-4">
+    <div class="h-16 flex items-center justify-between">
+      <!-- Brand -->
+      <a href="#" class=" text-lg text-slate-100"></a>
+
+      <!-- Links desktop -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#home" class="text-slate-300 hover:text-white font-medium">Home</a>
+        <a href="#about" class="text-slate-300 hover:text-white font-medium">Sobre</a>
+        <a href="#projects" class="text-slate-300 hover:text-white font-medium">Projetos</a>
+        <a href="#skills" class="text-slate-300 hover:text-white font-medium">Skills</a>
+        <a href="#contact" class="text-slate-300 hover:text-white font-medium">Contato</a>
+        <a
+          href="./img/Currículo.pdf" download
+          class="inline-flex items-center  rounded-xl  px-4 py-2 text-white font-semibold
+                 bg-gradient-to-r from-violet-600 to-fuchsia-500 shadow-[0_12px_28px_rgba(168,85,247,0.35)]
+                 hover:brightness-110"
+        >Download CV</a>
+      </nav>
+
+      <!-- Trigger mobile -->
+      <button
+        id="nav-trigger"
+        class="md:hidden p-2 rounded-xl text-slate-200 hover:bg-white/10"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <!-- ícone hamburger -->
+        <svg id="icon-menu" class="size-6" viewBox="0 0 24 24" fill="none">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <!-- ícone X (inicialmente oculto) -->
+        <svg id="icon-x" class="size-6 hidden" viewBox="0 0 24 24" fill="none">
+          <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- OVERLAY + SHEET (Mobile) -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden fixed inset-0 z-40"
+    role="dialog" aria-modal="true"
+  >
+    <!-- Backdrop -->
+    <div id="backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+
+    
+    <div
+      class="absolute left-0 right-0 top-16 max-h-[calc(100svh-4rem)] overflow-auto
+             bg-[#0b1220] border-t border-white/10 shadow-[0_20px_60px_rgba(0,0,0,.5)]
+             animate-in slide-in-from-top-2 duration-200"
+    >
+      <div class="container mx-auto px-4 py-4">
+        <nav class="flex flex-col gap-2">
+          <a data-scroll="#home" class="px-2 py-3 rounded-md text-slate-300 hover:text-white hover:bg-white/10 font-medium">Home</a>
+          <a data-scroll="#about" class="px-2 py-3 rounded-md text-slate-300 hover:text-white hover:bg-white/10 font-medium">Sobre</a>
+          <a data-scroll="#projects" class="px-2 py-3 rounded-md text-slate-300 hover:text-white hover:bg-white/10 font-medium">Projetos</a>
+          <a data-scroll="#skills" class="px-2 py-3 rounded-md text-slate-300 hover:text-white hover:bg-white/10 font-medium">Skills</a>
+          <a data-scroll="#contact" class="px-2 py-3 rounded-md text-slate-300 hover:text-white hover:bg-white/10 font-medium">Contato</a>
+
+          <a
+            href="Currículo.pdf" download
+            class="mt-2 inline-flex items-center justify-center rounded-xl px-4 py-3 text-white font-semibold
+                   bg-gradient-to-r from-violet-600 to-fuchsia-500 shadow-[0_12px_28px_rgba(168,85,247,0.35)]
+                   hover:brightness-110"
+          >Download CV</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+  <!-- HERO -->
+  <main id="home" class="hero">
+    <div class="container">
+      <div class="kicker">Olá, eu sou</div>
+      <h1 class="title">Yasmim Freire</h1>
+      <h2 class="subtitle">Desenvolvedora Fullstack</h2>
+      <p class="lead">
+        Criando experiências digitais incríveis através de código limpo e design
+        intuitivo.
+      </p>
+
+      <div class="cta">
+        <a class="btn btn-gradient rounded-xl" href="#projects">Ver Projetos</a>
+        <a class="btn btn-outline" href="#contact">Entrar em Contato</a>
+      </div>
+
+      <div class="socials" aria-label="Redes sociais">
+        <!-- GitHub -->
+        <a class="social" href="https://github.com/YASMIM-FSB" target="_blank" rel="noreferrer noopener" aria-label="GitHub">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M12 2C6.477 2 2 6.646 2 12.314c0 4.519 2.865 8.35 6.839 9.704.5.096.682-.223.682-.5
+              0-.247-.01-1.066-.015-1.935-2.782.623-3.37-1.217-3.37-1.217-.455-1.184-1.11-1.5-1.11-1.5-.908-.644.07-.631.07-.631
+              1.004.073 1.532 1.07 1.532 1.07.893 1.572 2.343 1.118 2.915.855.09-.668.35-1.118.637-1.375-2.22-.257-4.555-1.15-4.555-5.12
+              0-1.13.39-2.053 1.03-2.777-.103-.258-.447-1.294.098-2.698 0 0 .84-.275 2.75 1.06A9.27 9.27 0 0 1 12 7.27c.85.004 1.705.117 2.504.343
+              1.909-1.336 2.748-1.06 2.748-1.06.546 1.404.202 2.44.1 2.698.64.724 1.03 1.647 1.03 2.777 0 3.98-2.338 4.86-4.566 5.113.358.32.677.95.677 1.916
+              0 1.383-.012 2.499-.012 2.839 0 .279.18.6.688.498C19.138 20.66 22 16.832 22 12.314 22 6.646 17.523 2 12 2z"/>
+          </svg>
+        </a>
+        <!-- LinkedIn -->
+        <a class="social" href="https://www.linkedin.com/in/yasmim-freire/" target="_blank" rel="noreferrer noopener" aria-label="LinkedIn">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6 1.12 6 0 4.88 0 3.5S1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8.5h4V24h-4V8.5zM8.5 8.5h3.8v2.1h.1c.5-.9 1.7-2.3 3.6-2.3 3.9 0 4.6 2.6 4.6 6V24h-4v-6.8c0-1.6 0-3.7-2.3-3.7-2.3 0-2.7 1.7-2.7 3.6V24h-4V8.5z"/>
+          </svg>
+        </a>
+        <!-- Email -->
+        <a class="social" href="mailto:freirey46@gmail.com" aria-label="E-mail">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 13.065 0 6.375V18a2 2 0 0 0 2 2h20a2 2 0 0 0 2-2V6.375l-12 6.69Zm11.985-9.14A2 2 0 0 0 22 3H2a2 2 0 0 0-1.985.925L12 10.935l11.985-7.01Z"/>
+          </svg>
+        </a>
+      </div>
+
+      <a class="scroll-down" href="#about" aria-label="Rolar para baixo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M12 5v14m0 0l-6-6m6 6l6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </main>
+
+
+ <!-- SOBRE MIM -->
+<section id="about" class="py-24 md:py-28">
+  <div class="container mx-auto px-6">
+    <!-- Cabeçalho -->
+    <header class="text-center mb-10">
+      <h2 class="text-4xl md:text-6xl font-medium leading-tight text-slate-100">Sobre Mim</h2>
+      <p class="mt-3 text-sm md:text-base text-slate-400">
+        Desenvolvedora apaixonada por transformar ideias em realidade digital
+      </p>
+    </header>
+
+    <!-- Grid principal -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 mt-8">
+      <!-- Texto (esquerda) -->
+      <div class="max-w-[52ch] mx-auto lg:mx-0 text-[17px] leading-8 text-slate-200/90">
+        <p>
+          Com mais de 3 anos de experiência em Tecnologia da Informação e 1 ano em Desenvolvimento Web,
+          tenho dedicado minha carreira a criar soluções digitais que fazem a diferença.
+          Minha jornada começou com a curiosidade sobre como as coisas funcionam na web e evoluiu para
+          uma paixão por construir experiências excepcionais para usuários.
+        </p>
+      </div>
+
+      <!-- Card de Experiência (direita) -->
+      <aside
+        class="rounded-2xl border border-white/10 bg-white/[0.04] shadow-[0_18px_50px_rgba(0,0,0,0.35)] p-6 md:p-7
+               backdrop-blur-md max-w-2xl mx-auto lg:mx-0"
+        aria-label="Experiência"
+      >
+        <h3 class="text-xl font-extrabold text-slate-100 mb-4">Experiência</h3>
+
+        <div>
+          <div class="font-extrabold text-slate-100">Estagiária</div>
+          <div class="mt-1 font-semibold text-pink-400">Progressão Empresarial • 2024 - Presente</div>
+          <p class="mt-3 text-[15.5px] leading-7 text-slate-300">
+            Atuo na criação de experiências digitais completas, desde a análise de mercado e
+            estratégias de conteúdo para redes sociais, até o desenvolvimento e manutenção de
+            aplicações web. Também acompanho métricas de desempenho, ofereço suporte técnico e
+            contribuo para o crescimento de projetos que unem tecnologia, design e marketing digital.
+          </p>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Cards inferiores (3 colunas) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">
+      <!-- Card 1 -->
+      <div class="group rounded-2xl border border-white/10 bg-white/[0.03]
+                shadow-[0_18px_40px_rgba(0,0,0,0.28)] p-6
+                transition-all duration-300 ease-out
+                hover:bg-white/[0.06] hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(124,58,237,0.35)]">
+
+        <div class="flex items-center gap-4 justify-center flex-col">
+            <div
+            class="size-12 md:size-[52px] rounded-xl grid place-items-center text-white
+                    shadow-[0_12px_28px_rgba(168,85,247,0.35)]
+                    bg-gradient-to-tr from-violet-600 to-fuchsia-500
+                    transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(168,85,247,0.55)]">
+            <!-- ícone -->
+            <svg viewBox="0 0 24 24" class="size-5" fill="none">
+                <path d="M8 16l-4-4 4-4M16 8l4 4-4 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            </div>
+            <h4 class="text-lg md:text-xl font-extrabold text-slate-100">Desenvolvimento</h4>
+        </div>
+
+        <p class="mt-3 text-slate-400">Código limpo e escalável com as melhores práticas</p>
+        </div>
+
+      <!-- Card 2 -->
+      <div class="group rounded-2xl border border-white/10 bg-white/[0.03]
+         shadow-[0_18px_40px_rgba(0,0,0,0.28)] p-6
+         transition-all duration-300 ease-out
+         hover:bg-white/[0.06] hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(124,58,237,0.35)]">
+        <div class="flex items-center gap-4 justify-center flex-col">
+          <div class="size-12 md:size-[52px] rounded-xl grid place-items-center text-white
+                      shadow-[0_12px_28px_rgba(168,85,247,0.35)]
+                      bg-gradient-to-tr from-violet-600 to-fuchsia-500">
+            <!-- ícone paint -->
+            <svg viewBox="0 0 24 24" class="size-5" fill="none">
+              <path d="M12 3a6 6 0 0 0-6 6v1H4a2 2 0 1 0 0 4h2v1a6 6 0 1 0 6-6h-2"
+                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h4 class="text-lg md:text-xl font-extrabold text-slate-100">Design</h4>
+        </div>
+        <p class="mt-3 text-slate-400">Interfaces intuitivas e experiências memoráveis</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="group rounded-2xl border border-white/10 bg-white/[0.03]
+         shadow-[0_18px_40px_rgba(0,0,0,0.28)] p-6
+         transition-all duration-300 ease-out
+         hover:bg-white/[0.06] hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(124,58,237,0.35)] ">
+        <div class="flex items-center gap-4 justify-center flex-col">
+          <div class="size-12 md:size-[52px] rounded-xl grid place-items-center text-white
+                      shadow-[0_12px_28px_rgba(168,85,247,0.35)]
+                      bg-gradient-to-tr from-violet-600 to-fuchsia-500">
+            <!-- ícone rocket -->
+            <svg viewBox="0 0 24 24" class="size-5" fill="none">
+              <path d="M14 4l6 6-4 1-3 3-1 4-6-6 4-1 3-3 1-4z"
+                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h4 class="text-lg md:text-xl font-extrabold text-slate-100">Performance</h4>
+        </div>
+        <p class="mt-3 text-slate-400">Otimização e velocidade em cada projeto</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+ <!-- PROJETOS -->
+<section id="projects" class="py-24 md:py-28">
+  <div class="container mx-auto px-6">
+    <!-- Header -->
+    <header class="text-center mb-10">
+      <h2 class="text-4xl md:text-6xl font-medium leading-tight text-slate-100">Projetos</h2>
+      <p class="mt-3 text-sm md:text-base text-slate-400">
+        Alguns dos projetos que desenvolvi recentemente
+      </p>
+    </header>
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mt-8">
+      <!-- Card 1 -->
+      <article
+        class="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]
+               shadow-[0_18px_40px_rgba(0,0,0,0.28)] transition-all duration-300
+               hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(124,58,237,0.35)]"
+      >
+        <!-- Capa -->
+        <div class="relative aspect-[16/6] md:aspect-[16/5] overflow-hidden">
+          <img
+            src="./img/logoProgressaoEmpresarial.jpeg" alt="Projeto Progressão Empresarial"
+            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          />
+          <!-- borda suave no topo -->
+          <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/10"></div>
+        </div>
+
+        <!-- Conteúdo -->
+        <div class="p-6 md:p-7">
+          <h3 class="text-xl md:text-2xl font-extrabold text-slate-100">
+            Progressão Empresarial
+          </h3>
+          <p class="mt-2 text-slate-400 leading-7">
+            Uma landing page simples para um escritório de contabilidade que desejava
+            um site bem estruturado, com uma apresentação adequada e com todas as informações de contato
+          </p>
+
+          <!-- Tags -->
+          <ul class="mt-4 flex flex-wrap gap-2">
+            <li class="rounded-full bg-white/5 px-3 py-1 text-xs font-semibold text-slate-300 border border-white/10">HTML</li>
+            <li class="rounded-full bg-white/5 px-3 py-1 text-xs font-semibold text-slate-300 border border-white/10">CSS</li>
+            <li class="rounded-full bg-white/5 px-3 py-1 text-xs font-semibold text-slate-300 border border-white/10">Javascript</li>
+            <li class="rounded-full bg-white/5 px-3 py-1 text-xs font-semibold text-slate-300 border border-white/10">PHP</li>
+            <li class="rounded-full bg-white/5 px-3 py-1 text-xs font-semibold text-slate-300 border border-white/10">MySQL</li>
+          </ul>
+
+          <!-- Botão -->
+          <div class="mt-6">
+            <a
+              href="https://progressaoempresarial.com" target="_blank" rel="noreferrer noopener"
+              class="inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 font-semibold text-white
+                     bg-gradient-to-r from-violet-600 to-fuchsia-500 shadow-[0_16px_40px_rgba(168,85,247,0.45)]
+                     transition-all duration-200 hover:brightness-110"
+            >
+              <!-- ícone link -->
+              <svg class="size-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M10 14L21 3M21 3h-6M21 3v6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Acessar
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article
+        class="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]
+               shadow-[0_18px_40px_rgba(0,0,0,0.28)] transition-all duration-300
+               hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(124,58,237,0.35)]"
+      >
+        <!-- Capa -->
+        <div class="relative aspect-[16/6] md:aspect-[16/5] overflow-hidden">
+          <img
+            src="./img/ParkOn.png" alt="Projeto ParkOn"
+            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          />
+          <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/10"></div>
+        </div>
+
+        <!-- Conteúdo -->
+        <div class="p-6 md:p-7">
+          <h3 class="text-xl md:text-2xl font-extrabold text-slate-100">
+            ParkOn - Projeto em andamento
+          </h3>
+          <p class="mt-2 text-slate-400 leading-7">
+            Um aplicativo protótipo capaz de informar o usuário quantas vagas livres há
+            em estacionamento selecionado, com base em uma maquete desenvolvida em arduino e ESP32.
+          </p>
+
+          <!-- Tags -->
+          <ul class="mt-4 flex flex-wrap gap-2">
+            <li class="rounded-full bg-white/5 px-3 py-1 text-xs font-semibold text-slate-300 border border-white/10">React</li>
+            <li class="rounded-full bg-white/5 px-3 py-1 text-xs font-semibold text-slate-300 border border-white/10">TypeScript</li>
+            <li class="rounded-full bg-white/5 px-3 py-1 text-xs font-semibold text-slate-300 border border-white/10">C++</li>
+            <li class="rounded-full bg-white/5 px-3 py-1 text-xs font-semibold text-slate-300 border border-white/10">PHP</li>
+          </ul>
+
+          <!-- Botão 
+           <div class="mt-6">
+            <a
+              href="https://seu-link-do-projeto-2.com" target="_blank" rel="noreferrer noopener"
+              class="inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 font-semibold text-white
+                     bg-gradient-to-r from-violet-600 to-fuchsia-500 shadow-[0_16px_40px_rgba(168,85,247,0.45)]
+                     transition-all duration-200 hover:brightness-110"
+            >
+              <svg class="size-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M10 14L21 3M21 3h-6M21 3v6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Acessar
+            </a>
+          </div> -->
+          
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+
+
+ <section id="skills" class="py-24 md:py-28 bg-[#0b1220]">
+  <div class="container mx-auto px-6">
+    <!-- Cabeçalho -->
+    <header class="text-center mb-10">
+      <h2 class="text-4xl md:text-6xl font-medium text-slate-100">Skills & Tecnologias</h2>
+      <p class="mt-3 text-slate-400">Ferramentas e tecnologias que utilizo no dia a dia</p>
+    </header>
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- FRONTEND -->
+      <div
+        class="group rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-300
+               hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(139,92,246,0.4)]"
+      >
+        <h3 class="flex items-center gap-2 text-lg md:text-xl font-bold text-slate-100">
+          <span class="text-violet-500 text-3xl leading-none">•</span> Frontend
+        </h3>
+
+        <ul class="flex flex-wrap gap-2 mt-5">
+          <li class="tech">React</li>
+          <li class="tech">TypeScript</li>
+          <li class="tech">Tailwind CSS</li>
+          <li class="tech">HTML5</li>
+          <li class="tech">CSS3</li>
+          <li class="tech">JavaScript</li>
+          <li class="tech">Bootstrap</li>
+        </ul>
+      </div>
+
+      <!-- BACKEND -->
+      <div
+        class="group rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-300
+               hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(139,92,246,0.4)]"
+      >
+        <h3 class="flex items-center gap-2 text-lg md:text-xl font-bold text-slate-100">
+          <span class="text-violet-500 text-3xl leading-none">•</span> Backend
+        </h3>
+
+        <ul class="flex flex-wrap gap-2 mt-5">
+          <li class="tech">Node.js</li>
+          <li class="tech">Python</li>
+          <li class="tech">MySQL</li>
+          <li class="tech">PHP</li>
+        </ul>
+      </div>
+
+      <!-- DEVOPS -->
+      <div
+        class="group rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-300
+               hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(139,92,246,0.4)]"
+      >
+        <h3 class="flex items-center gap-2 text-lg md:text-xl font-bold text-slate-100">
+          <span class="text-violet-500 text-3xl leading-none">•</span> DevOps & Tools
+        </h3>
+
+        <ul class="flex flex-wrap gap-2 mt-5">
+          <li class="tech">Git</li>
+          <li class="tech">GitHub</li>
+        </ul>
+      </div>
+
+      <!-- OUTROS -->
+      <div
+        class="group rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-300
+               hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(139,92,246,0.4)]"
+      >
+        <h3 class="flex items-center gap-2 text-lg md:text-xl font-bold text-slate-100">
+          <span class="text-violet-500 text-3xl leading-none">•</span> Outros
+        </h3>
+
+        <ul class="flex flex-wrap gap-2 mt-5">
+          <li class="tech">UI/UX Design</li>
+          <li class="tech">Figma</li>
+          <li class="tech">WordPress</li>
+          <li class="tech">SEO</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- CONTATO -->
+<section id="contact" class="py-24 md:py-28 bg-[#0b1220]">
+  <div class="container mx-auto px-6">
+    <!-- Header -->
+    <header class="text-center mb-10">
+      <h2 class="text-4xl md:text-6xl font-medium text-slate-100">Entre em Contato</h2>
+      <p class="mt-3 text-slate-400">Tem um projeto em mente? Vamos conversar!</p>
+    </header>
+
+    <!-- 3 cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <!-- Email -->
+      <div
+        class="rounded-2xl border border-white/10 bg-white/[0.03] p-8 text-center
+               shadow-[0_18px_40px_rgba(0,0,0,0.28)]
+               transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(139,92,246,0.4)]">
+        <div class="mx-auto mb-4 size-14 rounded-2xl grid place-items-center
+                    bg-gradient-to-tr from-violet-600 to-fuchsia-500 text-white
+                    shadow-[0_12px_28px_rgba(168,85,247,0.35)]">
+          <!-- mail icon -->
+          <svg class="size-6" viewBox="0 0 24 24" fill="none">
+            <path d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z" stroke="white" stroke-width="2"/>
+            <path d="m22 8-10 7L2 8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="text-slate-400">Email</div>
+        <a href="mailto:freirey46@gmail.com" class="mt-2 block font-semibold text-slate-100">freirey46@gmail.com</a>
+      </div>
+
+      <!-- Telefone -->
+      <div
+        class="rounded-2xl border border-white/10 bg-white/[0.03] p-8 text-center
+               shadow-[0_18px_40px_rgba(0,0,0,0.28)]
+               transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(139,92,246,0.4)]">
+        <div class="mx-auto mb-4 size-14 rounded-2xl grid place-items-center
+                    bg-gradient-to-tr from-violet-600 to-fuchsia-500 text-white
+                    shadow-[0_12px_28px_rgba(168,85,247,0.35)]">
+          <!-- phone icon -->
+          <svg class="size-6" viewBox="0 0 24 24" fill="none">
+            <path d="M22 16.92v2a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 3.9 2 2 0 0 1 4 1.72h2a2 2 0 0 1 2 1.72c.12.9.32 1.78.59 2.63a2 2 0 0 1-.45 2.11L7 9a16 16 0 0 0 6 6l.82-1.14a2 2 0 0 1 2.11-.45c.85.27 1.73.47 2.63.59A2 2 0 0 1 22 16.92Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="text-slate-400">Telefone</div>
+        <a href="https://wa.me/5511992085032?text=Ol%C3%A1%20Yasmim%2C%20vim%20pelo%20seu%20portf%C3%B3lio%2C%20gostaria%20de%20saber%20mais%20sobre%20voc%C3%AA..." class="mt-2 block font-semibold text-slate-100">+55 (11) 99208-5032</a>
+      </div>
+
+      <!-- Localização -->
+      <div
+        class="rounded-2xl border border-white/10 bg-white/[0.03] p-8 text-center
+               shadow-[0_18px_40px_rgba(0,0,0,0.28)]
+               transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(139,92,246,0.4)]">
+        <div class="mx-auto mb-4 size-14 rounded-2xl grid place-items-center
+                    bg-gradient-to-tr from-violet-600 to-fuchsia-500 text-white
+                    shadow-[0_12px_28px_rgba(168,85,247,0.35)]">
+          <!-- pin icon -->
+          <svg class="size-6" viewBox="0 0 24 24" fill="none">
+            <path d="M12 21s7-4.35 7-11a7 7 0 1 0-14 0c0 6.65 7 11 7 11Z" stroke="white" stroke-width="2"/>
+            <circle cx="12" cy="10" r="3" stroke="white" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="text-slate-400">Localização</div>
+        <div class="mt-2 font-semibold text-slate-100">São Bernardo do Campo, São Paulo</div>
+      </div>
+    </div>
+
+    <!-- Redes Sociais -->
+    <div class="mt-14 text-center">
+      <h3 class="text-xl md:text-2xl font-extrabold text-slate-100">Redes Sociais</h3>
+
+      <div class="mt-6 flex items-center justify-center gap-4">
+        <!-- GitHub -->
+        <a href="https://github.com/YASMIM-FSB" target="_blank" rel="noreferrer noopener"
+           class="size-12 rounded-full grid place-items-center text-slate-200
+                  bg-white/[0.04] border border-white/10
+                  transition-all duration-200 hover:brightness-110 hover:shadow-[0_0_20px_rgba(139,92,246,0.45)]">
+          <svg class="size-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M12 2C6.48 2 2 6.65 2 12.32c0 4.52 2.86 8.35 6.84 9.7.5.1.68-.22.68-.5 0-.25-.01-1.07-.02-1.94-2.78.62-3.37-1.22-3.37-1.22-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.07 1.53 1.07.9 1.57 2.34 1.12 2.92.86.09-.67.35-1.12.64-1.37-2.22-.26-4.56-1.15-4.56-5.12 0-1.13.39-2.05 1.03-2.78-.1-.26-.45-1.29.1-2.7 0 0 .84-.28 2.75 1.06A9.23 9.23 0 0 1 12 7.27c.85.01 1.7.12 2.5.34 1.91-1.34 2.75-1.06 2.75-1.06.55 1.41.2 2.44.1 2.7.64.73 1.03 1.65 1.03 2.78 0 3.97-2.34 4.85-4.57 5.11.36.32.68.95.68 1.92 0 1.38-.01 2.5-.01 2.84 0 .28.18.6.69.5C19.14 20.66 22 16.83 22 12.32 22 6.65 17.52 2 12 2z"/>
+          </svg>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/yasmim-freire/" target="_blank" rel="noreferrer noopener"
+           class="size-12 rounded-full grid place-items-center text-slate-200
+                  bg-white/[0.04] border border-white/10
+                  transition-all duration-200 hover:brightness-110 hover:shadow-[0_0_20px_rgba(139,92,246,0.45)]">
+          <svg class="size-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6 1.12 6 0 4.88 0 3.5S1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8.5h4V24h-4V8.5zM8.5 8.5h3.8v2.1h.1c.5-.9 1.7-2.3 3.6-2.3 3.9 0 4.6 2.6 4.6 6V24h-4v-6.8c0-1.6 0-3.7-2.3-3.7-2.3 0-2.7 1.7-2.7 3.6V24h-4V8.5z"/>
+          </svg>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/yfreire.dev/" target="_blank" rel="noreferrer noopener"
+           class="size-12 rounded-full grid place-items-center text-slate-200
+                  bg-white/[0.04] border border-white/10
+                  transition-all duration-200 hover:brightness-110 hover:shadow-[0_0_20px_rgba(139,92,246,0.45)]">
+          <svg class="size-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="2"/>
+            <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Botão WhatsApp -->
+      <div class="mt-10">
+        <a
+          href="https://wa.me/5511992085032?text=Ol%C3%A1%20Yasmim%2C%20vim%20pelo%20seu%20portf%C3%B3lio%2C%20gostaria%20de%20saber%20mais%20sobre%20voc%C3%AA..."
+          target="_blank" rel="noreferrer noopener"
+          class="mx-auto block w-fit rounded-xl px-6 py-3 font-semibold text-white
+                 bg-gradient-to-r from-violet-600 to-fuchsia-500
+                 shadow-[0_16px_40px_rgba(168,85,247,0.45)]
+                 transition-all duration-200 hover:brightness-110"
+        >
+          Me chame no Whatsapp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="py-6 text-center" style="background-color: #0e1628;">
+    <p style="color: #8b9db762;">© 2025 Yasmim Freire. Todos os direitos reservados.</p>
+</footer>
+
+  <script>
+  // sombra da navbar ao rolar (opcional)
+  const header = document.getElementById('site-nav');
+  const shadowOnScroll = () => {
+    header.style.boxShadow = window.scrollY > 6 ? '0 12px 24px rgba(0,0,0,.25)' : 'none';
+  };
+  window.addEventListener('scroll', shadowOnScroll);
+  shadowOnScroll();
+
+  const trigger = document.getElementById('nav-trigger');
+  const menu = document.getElementById('mobile-menu');
+  const backdrop = document.getElementById('backdrop');
+  const iconMenu = document.getElementById('icon-menu');
+  const iconX = document.getElementById('icon-x');
+
+  function openMenu() {
+    menu.classList.remove('hidden');
+    trigger.setAttribute('aria-expanded', 'true');
+    iconMenu.classList.add('hidden');
+    iconX.classList.remove('hidden');
+    document.body.style.overflow = 'hidden'; // trava scroll
+  }
+  function closeMenu() {
+    menu.classList.add('hidden');
+    trigger.setAttribute('aria-expanded', 'false');
+    iconMenu.classList.remove('hidden');
+    iconX.classList.add('hidden');
+    document.body.style.overflow = ''; // destrava scroll
+  }
+
+  trigger.addEventListener('click', () => {
+    const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+    isOpen ? closeMenu() : openMenu();
+  });
+
+  // clicar no backdrop fecha
+  backdrop.addEventListener('click', closeMenu);
+
+  // fechar com ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+  });
+
+  // smooth scroll + fechar ao clicar
+  function scrollToId(id) {
+    const el = document.querySelector(id);
+    if (!el) return;
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    closeMenu();
+  }
+  document.querySelectorAll('[data-scroll]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      scrollToId(a.getAttribute('data-scroll'));
+    });
+  });
+</script>
+</body>
+</html>
