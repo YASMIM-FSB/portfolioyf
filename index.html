@@ -3,12 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="output.css">
-  <title>Yasmim Freire</title>
+  <title>Portfólio Yasmim</title>
 
   <style>
-    /* ================= Design Tokens ================= */
     :root{
       --container: 1200px;
       --radius: 12px;
@@ -51,7 +49,7 @@
     .nav-inner{display:flex; align-items:center; justify-content:space-between; width:100%}
     .brand{
       color:#cbd5e1; font-weight:700; letter-spacing:.3px; font-size:14px;
-      opacity:.0; pointer-events:none; 
+      opacity:.0; pointer-events:none; /* (no print não aparece brand à esquerda) */
     }
 
     .links{display:flex; gap:28px; align-items:center}
@@ -100,7 +98,7 @@
     }
     .title{
       font-size: clamp(40px, 6vw, 72px);
-      font-weight: 700; line-height:1.05; margin:0 0 8px;
+      font-weight: 800; line-height:1.05; margin:0 0 8px;
       background: linear-gradient(90deg, #c4b5fd, #a78bfa);
       -webkit-background-clip:text; background-clip:text; color: transparent;
     }
@@ -188,11 +186,11 @@
         <a href="#skills" class="text-slate-300 hover:text-white font-medium">Skills</a>
         <a href="#contact" class="text-slate-300 hover:text-white font-medium">Contato</a>
         <a
-          href="./img/Currículo.pdf" download
-          class="inline-flex items-center  rounded-xl  px-4 py-2 text-white font-semibold
-                 bg-gradient-to-r from-violet-600 to-fuchsia-500 shadow-[0_12px_28px_rgba(168,85,247,0.35)]
-                 hover:brightness-110"
-        >Download CV</a>
+            href="Curriculo.pdf" download
+            class="mt-2 inline-flex items-center justify-center rounded-xl px-4 py-3 text-white font-semibold
+                   bg-gradient-to-r from-violet-600 to-fuchsia-500 shadow-[0_12px_28px_rgba(168,85,247,0.35)]
+                   hover:brightness-110"
+          >Download CV</a>
       </nav>
 
       <!-- Trigger mobile -->
@@ -224,7 +222,7 @@
     <!-- Backdrop -->
     <div id="backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
 
-    
+    <!-- Sheet -->
     <div
       class="absolute left-0 right-0 top-16 max-h-[calc(100svh-4rem)] overflow-auto
              bg-[#0b1220] border-t border-white/10 shadow-[0_20px_60px_rgba(0,0,0,.5)]
@@ -239,7 +237,7 @@
           <a data-scroll="#contact" class="px-2 py-3 rounded-md text-slate-300 hover:text-white hover:bg-white/10 font-medium">Contato</a>
 
           <a
-            href="Currículo.pdf" download
+            href="Curriculo.pdf" download
             class="mt-2 inline-flex items-center justify-center rounded-xl px-4 py-3 text-white font-semibold
                    bg-gradient-to-r from-violet-600 to-fuchsia-500 shadow-[0_12px_28px_rgba(168,85,247,0.35)]
                    hover:brightness-110"
@@ -368,7 +366,7 @@
             <h4 class="text-lg md:text-xl font-extrabold text-slate-100">Desenvolvimento</h4>
         </div>
 
-        <p class="mt-3 text-slate-400 text-center">Código limpo e escalável com as melhores práticas</p>
+        <p class="mt-3 text-slate-400">Código limpo e escalável com as melhores práticas</p>
         </div>
 
       <!-- Card 2 -->
@@ -388,7 +386,7 @@
           </div>
           <h4 class="text-lg md:text-xl font-extrabold text-slate-100">Design</h4>
         </div>
-        <p class="mt-3 text-slate-400 text-center">Interfaces intuitivas e experiências memoráveis</p>
+        <p class="mt-3 text-slate-400">Interfaces intuitivas e experiências memoráveis</p>
       </div>
 
       <!-- Card 3 -->
@@ -400,7 +398,7 @@
           <div class="size-12 md:size-[52px] rounded-xl grid place-items-center text-white
                       shadow-[0_12px_28px_rgba(168,85,247,0.35)]
                       bg-gradient-to-tr from-violet-600 to-fuchsia-500">
-            <!-- ícone Performace -->
+            <!-- ícone rocket -->
             <svg viewBox="0 0 24 24" class="size-5" fill="none">
               <path d="M14 4l6 6-4 1-3 3-1 4-6-6 4-1 3-3 1-4z"
                     stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -408,7 +406,7 @@
           </div>
           <h4 class="text-lg md:text-xl font-extrabold text-slate-100">Performance</h4>
         </div>
-        <p class="mt-3 text-slate-400 text-center">Otimização e velocidade em cada projeto</p>
+        <p class="mt-3 text-slate-400">Otimização e velocidade em cada projeto</p>
       </div>
     </div>
   </div>
@@ -642,7 +640,7 @@
         <div class="mx-auto mb-4 size-14 rounded-2xl grid place-items-center
                     bg-gradient-to-tr from-violet-600 to-fuchsia-500 text-white
                     shadow-[0_12px_28px_rgba(168,85,247,0.35)]">
-          <!-- mail icon -->
+          <!-- Email icone -->
           <svg class="size-6" viewBox="0 0 24 24" fill="none">
             <path d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z" stroke="white" stroke-width="2"/>
             <path d="m22 8-10 7L2 8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -660,7 +658,7 @@
         <div class="mx-auto mb-4 size-14 rounded-2xl grid place-items-center
                     bg-gradient-to-tr from-violet-600 to-fuchsia-500 text-white
                     shadow-[0_12px_28px_rgba(168,85,247,0.35)]">
-          <!-- phone icon -->
+          <!-- telefone icone -->
           <svg class="size-6" viewBox="0 0 24 24" fill="none">
             <path d="M22 16.92v2a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 3.9 2 2 0 0 1 4 1.72h2a2 2 0 0 1 2 1.72c.12.9.32 1.78.59 2.63a2 2 0 0 1-.45 2.11L7 9a16 16 0 0 0 6 6l.82-1.14a2 2 0 0 1 2.11-.45c.85.27 1.73.47 2.63.59A2 2 0 0 1 22 16.92Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -677,7 +675,7 @@
         <div class="mx-auto mb-4 size-14 rounded-2xl grid place-items-center
                     bg-gradient-to-tr from-violet-600 to-fuchsia-500 text-white
                     shadow-[0_12px_28px_rgba(168,85,247,0.35)]">
-          <!-- pin icon -->
+          <!-- Localização icone -->
           <svg class="size-6" viewBox="0 0 24 24" fill="none">
             <path d="M12 21s7-4.35 7-11a7 7 0 1 0-14 0c0 6.65 7 11 7 11Z" stroke="white" stroke-width="2"/>
             <circle cx="12" cy="10" r="3" stroke="white" stroke-width="2"/>
@@ -744,7 +742,7 @@
   </div>
 </section>
 
-<!--Footer-->
+ <!--Footer-->
 <footer class="py-6 text-center" style="background-color: #0e1628;">
     <p style="color: #8b9db762;">© 2025 Yasmim Freire. Todos os direitos reservados.</p>
 </footer>
