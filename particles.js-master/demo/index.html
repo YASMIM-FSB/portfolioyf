@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>particles.js</title>
+  <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
+  <meta name="author" content="Vincent Garreau" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="css/style.css">
+</head>
+<body>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+  /* Inicialização direta, sem precisar de arquivo particles.json */
+  particlesJS('particles-js', {
+    particles: {
+      number: { value: 70, density: { enable: true, value_area: 800 } },
+      color: { value: "#ec4899" },               // roxo claro (combina com seu gradiente)
+      shape: { type: "circle" },
+      opacity: { value: 0.18, random: false },
+      size: { value: 2.2, random: true },
+      line_linked: {
+        enable: true,
+        distance: 140,
+        color: "#7c3aed",                        // roxo
+        opacity: 0.20, 
+        width: 1
+      },
+      move: {
+        enable: true,
+        speed: 1.1,
+        direction: "none",
+        random: false,
+        straight: false,
+        out_mode: "out",
+        attract: { enable: false }
+      }
+    },
+    interactivity: {
+      detect_on: "canvas",
+    events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" }, resize: true },
+    modes: {
+      grab: { distance: 170, line_linked: { opacity: 0.35 } }  // ↓ se quiser menos destaque no hover
+    }
+  },
+  retina_detect: true
+  });
+
+
+
+
+
+  var count_particles, stats, update;
+  stats = new Stats;
+  stats.setMode(0);
+  stats.domElement.style.position = 'absolute';
+  stats.domElement.style.left = '0px';
+  stats.domElement.style.top = '0px';
+  document.body.appendChild(stats.domElement);
+  count_particles = document.querySelector('.js-count-particles');
+  update = function() {
+    stats.begin();
+    stats.end();
+    if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+      count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+    }
+    requestAnimationFrame(update);
+  };
+  requestAnimationFrame(update);
+</script>
+
+</body>
+</html>

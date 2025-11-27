@@ -13,10 +13,10 @@
 
   <!-- NAVBAR -->
   <header
-  id="site-nav"
+  id="site-nav" 
   class="fixed top-0 inset-x-0 z-50  backdrop-blur-md transition-shadow"
 >
-  <div class="container mx-auto px-4">
+  <div class="container mx-auto px-4" >
     <div class="h-16 flex items-center justify-between">
       <!-- Brand -->
       <a href="#" class=" text-lg text-slate-100"></a>
@@ -92,8 +92,8 @@
 </header>
 
   <!-- HERO -->
-  <main id="home" class="hero">
-    <div class="container">
+  <main class="hero" id="particles-js">
+    <div class="container" >
       <div class="kicker">Olá, eu sou</div>
       <h1 class="title">Yasmim Freire</h1>
       <h2 class="subtitle">Desenvolvedora Fullstack</h2>
@@ -362,10 +362,9 @@
             <li class="rounded-full bg-white/5 px-3 py-1 text-xs font-semibold text-slate-300 border border-white/10">PHP</li>
           </ul>
 
-          <!-- Botão 
            <div class="mt-6">
             <a
-              href="https://seu-link-do-projeto-2.com" target="_blank" rel="noreferrer noopener"
+              href="https://yellowgreen-zebra-984347.hostingersite.com/" target="_blank" rel="noreferrer noopener"
               class="inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 font-semibold text-white
                      bg-gradient-to-r from-violet-600 to-fuchsia-500 shadow-[0_16px_40px_rgba(168,85,247,0.45)]
                      transition-all duration-200 hover:brightness-110"
@@ -375,8 +374,63 @@
               </svg>
               Acessar
             </a>
-          </div> -->
+          </div> 
           
+        </div>
+      </article>
+
+
+      <!-- Card 3 -->
+      <article
+        class="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]
+               shadow-[0_18px_40px_rgba(0,0,0,0.28)] transition-all duration-300
+               hover:-translate-y-2 hover:shadow-[0_25px_60px_rgba(124,58,237,0.35)]"
+      data-aos="fade-right"
+     data-aos-offset="80"
+     data-aos-easing="ease-in-sine">
+        <!-- Capa -->
+        <div class="relative aspect-[16/6] md:aspect-[16/5] overflow-hidden">
+          <img
+            src="./img/TechZone.png" alt="Projeto Progressão Empresarial"
+            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          />
+          <!-- borda suave no topo -->
+          <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/10"></div>
+        </div>
+
+        <!-- Conteúdo -->
+        <div class="p-6 md:p-7">
+          <h3 class="text-xl md:text-2xl font-extrabold text-slate-100">
+            TechZone
+          </h3>
+          <p class="mt-2 text-slate-400 leading-7">
+            Um E-commerce fictício de uma loja que vende produtos de computadores para a Espanha
+          </p>
+
+          <!-- Tags -->
+          <ul class="mt-4 flex flex-wrap gap-2">
+            <li class="rounded-full bg-white/5 px-3 py-1 text-xs font-semibold text-slate-300 border border-white/10">HTML</li>
+            <li class="rounded-full bg-white/5 px-3 py-1 text-xs font-semibold text-slate-300 border border-white/10">CSS</li>
+            <li class="rounded-full bg-white/5 px-3 py-1 text-xs font-semibold text-slate-300 border border-white/10">Javascript</li>
+            <li class="rounded-full bg-white/5 px-3 py-1 text-xs font-semibold text-slate-300 border border-white/10">PHP</li>
+            <li class="rounded-full bg-white/5 px-3 py-1 text-xs font-semibold text-slate-300 border border-white/10">MySQL</li>
+          </ul>
+
+          <!-- Botão -->
+          <div class="mt-6">
+            <a
+              href="https://parkon.42web.io/" target="_blank" rel="noreferrer noopener"
+              class="inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 font-semibold text-white
+                     bg-gradient-to-r from-violet-600 to-fuchsia-500 shadow-[0_16px_40px_rgba(168,85,247,0.45)]
+                     transition-all duration-200 hover:brightness-110"
+            >
+              <!-- ícone link -->
+              <svg class="size-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M10 14L21 3M21 3h-6M21 3v6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Acessar
+            </a>
+          </div>
         </div>
       </article>
     </div>
@@ -596,7 +650,11 @@
     <p style="color: #8b9db762;">© 2025 Yasmim Freire. Todos os direitos reservados.</p>
 </footer>
 
+<script src="/particles.js-master/particles.js"></script>
+<script src="/particles.js-master/demo/js/app.js"></script>
 
+<!-- stats.js -->
+<script src="/particles.js-master/demo/js/lib/stats.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
